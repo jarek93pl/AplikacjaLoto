@@ -224,6 +224,12 @@
     <EmbeddedResource Include="Loto\Formatki\UczenieSieci.resx">
       <DependentUpon>UczenieSieci.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="AForge.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AForge.Neuro.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Loto\Liniki\Data.linika">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
