@@ -1,0 +1,20 @@
+9.1O.11   1:4
+O2,O9,27,3,4,44,
+3404,6796875
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\WP_20151029_001.jpg
+-------------------------------------------------------
+..44   :
+O2,,7,,4,4,
+3034,4267578125
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\WP_20151029_003.jpg
+-------------------------------------------------------
+Odwołanie do obiektu nie zostało ustawione na wystąpienie obiektu.
+bład daty
+4971,27880859375
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\WP_20151029_004.jpg
+-------------------------------------------------------
+..   4:
+,,7,1,4,1,
+4828,20263671875
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\WP_20151029_009.jpg
+-------------------------------------------------------

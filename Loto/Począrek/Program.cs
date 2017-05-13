@@ -4,6 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ŚieciNeuronowe;
+using System.Drawing;
+using System.IO;
+using GrafyShp.Icer;
+using System.Runtime.InteropServices;
+using Loto.SiecNeuronowa;
 namespace Loto
 {
     static class OknoLotka
@@ -19,6 +24,20 @@ namespace Loto
             Application.Run(new Form1());
         }
     }
+    static class OknoZewnetrzne
+    {
+        /// <summary>
+        /// Główny punkt wejścia dla aplikacji.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Aplikacja.Czyść();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new SprawdzanieLotka());
+        }
+    }
     static class SiećNeuronowaDzielenie
     {
         /// <summary>
@@ -27,6 +46,7 @@ namespace Loto
         [STAThread]
         static void Main()
         {
+            Aplikacja.Czyść();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form2());
@@ -40,6 +60,7 @@ namespace Loto
         [STAThread]
         static void Main()
         {
+            Aplikacja.Czyść();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new UczenieSieci());
@@ -50,43 +71,46 @@ namespace Loto
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
-        static void Main()
+        [STAThread]
+        unsafe static void Main(string[] arg)
         {
-            Graf<int> it = new Graf<int>();
-            it.ZmieńWielkośćIntami(7);
-            it.PołączenieDwustrone(0, 2);
-            it.PołączenieDwustrone(1, 3);
-            it.PołączenieDwustrone(3, 4);
-            it.PołączenieDwustrone(3, 5);
-            it.PołączenieDwustrone(4, 6);
+            Size s = new Size(200, 200);
+            bool* m = (bool*)Marshal.AllocHGlobal(10000000);
+            OperacjeNaStrumieniu.Czyść(m, s.WielkoścWPix());
+            SprawdzanieWypełnienia sp = new SprawdzanieWypełnienia(3, m, s);
+            sp.MalujLinie(new Point(80, 30), new Point(30, 30));
+            sp.MalujLinie(new Point(10,10), new Point(30,30));
 
-            foreach (var item in it.ZnajdźObszaryWGraf())
-            {
-                Console.WriteLine($"długośc grafu to {item.WielkośćGrafu}");
-                List<int> a1;
-                List<int> a2;
-                item.ZnajdźPołączenia(out a1, out a2);
-                for (int i = 0; i < a1.Count; i++)
-                {
-                    Console.WriteLine($"{a1[i]} - {a2[i]}");
-                }
+            sp.MalujLinie(new Point(80, 30), new Point(10, 10));
+            WstepnePrzygotowanie.WskaźnikNaObraz(m, s).Save("ta2.jpg");
 
-            }
-            Console.WriteLine("koniec");
-            Console.ReadLine();
         }
     }
+    
     static class Aplikacja
     {
+        public static void Czyść()
+        {
+#if DEBUG
+
+            string d = Directory.GetCurrentDirectory();
+            string[] fl =  Directory.GetFiles(d,"*.jpg");
+            foreach (var item in fl)
+            {
+                new FileInfo(item).Delete();
+            }
+#endif
+        }
         /// <summary>
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
         [STAThread]
         static void Main()
         {
+            Czyść();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LotoWyniki());
+            Application.Run(new LotoWynikFormatka());
         }
     }
 

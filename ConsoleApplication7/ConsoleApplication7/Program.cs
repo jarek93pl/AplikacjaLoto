@@ -53,6 +53,7 @@ namespace ConsoleApplication7
             }
 
         }
+       
         private static void Wywołaj(string item,float f,int IlośćNeuronów)
         {
             Bitmap b = new Bitmap(item);

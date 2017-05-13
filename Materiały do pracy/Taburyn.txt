@@ -1,0 +1,103 @@
+O7.O5.16   21:4O
+O3,O5,1O,17,22,23,
+14,16,26,3O,41,44,
+O3,17,26,29,3O,31,
+O3,27,3O,32,33,41,
+714,667785644531
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\DSC_0003.JPG
+-------------------------------------------------------
+O7.O5.16   21:4O
+O8,1O,26,28,36,44,
+623,416442871094
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\DSC_0004.JPG
+-------------------------------------------------------
+29.1O.15   21:4O
+O7,19,2O,21,41,45,
+1245,26220703125
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_003.jpg
+-------------------------------------------------------
+29.1O.15   21:4O
+O2,O3,O4,O5,13,37,
+1258,11010742188
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_004.jpg
+-------------------------------------------------------
+O3.9.15   21:4O
+29,39,42,44,48,49,
+1582,39379882813
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_005.jpg
+-------------------------------------------------------
+15.1O.15   21:4O
+O1,O3,19,2O,35,39,
+1020,75769042969
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_006.jpg
+-------------------------------------------------------
+15.1O.15   21:4O
+O8,12,18,44,48,49,
+1028,64208984375
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_007.jpg
+-------------------------------------------------------
+O8.2.4   :
+O1,O3,5,23,27,36,
+1623,01000976563
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_008.jpg
+-------------------------------------------------------
+29.1O.15   21:4O
+12,32,38,39,44,49,
+1351,84289550781
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_011.jpg
+-------------------------------------------------------
+9.O9.15   21:4O
+27,36,39,4O,44,47,
+1637,33276367188
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_013.jpg
+-------------------------------------------------------
+O8.1O.15   21:4O
+O4,O8,33,35,41,4,
+1555,55419921875
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_014.jpg
+-------------------------------------------------------
+12.O9.15   1:4O
+1O,17,19,22,37,44,
+2235,69165039063
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_015.jpg
+-------------------------------------------------------
+O3.O9.15   21:4O
+14,5,25,37,39,48,
+1360,10864257813
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_016.jpg
+-------------------------------------------------------
+O3.O9.15   21:4O
+O1,O3,11,15,23,36,
+1381,07397460938
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_018.jpg
+-------------------------------------------------------
+O.1.52   1:O
+11,OO,1O,22,3,35,
+2859,80639648438
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20151120_019.jpg
+-------------------------------------------------------
+1..   :11
+,3,27,,,4,
+3473,38037109375
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20160412_001 (1).jpg
+-------------------------------------------------------
+17.2.1   21:
+1,23,7,3,3,4,
+2744,35034179688
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20160412_002.jpg
+-------------------------------------------------------
+O3.O9.15   21:4O
+29,39,42,44,48,49,
+2412,173828125
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20160412_003.jpg
+-------------------------------------------------------
+O3.O9.5   1:4O
+29,39,42,44,48,49,
+1699,5078125
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20160413_001.jpg
+-------------------------------------------------------
+33.6.92   4:
+18,23,27,35,39,49,
+1442,66003417969
+C:\Users\Jarek\OneDrive\dysk zewnetszny\Loto\loto zdjecia\LotkiKompresja\Lotki\WP_20160413_002.jpg
+-------------------------------------------------------

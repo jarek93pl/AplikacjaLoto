@@ -54,16 +54,13 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Loto.Aplikacja</StartupObject>
+    <StartupObject>Loto.OknoLotka</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb" />
     <Reference Include="AForge.Neuro, Version=2.2.5.0, Culture=neutral, PublicKeyToken=2094f4ea39731d4f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Program Files (x86)\AForge.NET\Framework\Release\AForge.Neuro.dll</HintPath>
-    </Reference>
-    <Reference Include="Bibloteka">
-      <HintPath>..\..\Bibloteka\Bibloteka\bin\Debug\Bibloteka.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -78,107 +75,135 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Formatki\Danecs.cs">
+    <Compile Include="Loto\Formatki\Danecs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formatki\Danecs.Designer.cs">
+    <Compile Include="Loto\Formatki\Danecs.Designer.cs">
       <DependentUpon>Danecs.cs</DependentUpon>
     </Compile>
-    <Compile Include="DaneStatystyczne.cs" />
-    <Compile Include="Programowanie Ogólne\ListaZPorównywaniem.cs" />
-    <Compile Include="Matematyka\DoKwadratów.cs" />
-    <Compile Include="Linika.cs" />
-    <Compile Include="LinikaWzgledna.cs" />
-    <Compile Include="Formatki\LotoWyniki.cs">
+    <Compile Include="Loto\Formatki\ModyfikatorPaczek.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formatki\LotoWyniki.Designer.cs">
+    <Compile Include="Loto\Formatki\ModyfikatorPaczek.Designer.cs">
+      <DependentUpon>ModyfikatorPaczek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loto\DaneStatystyczne.cs" />
+    <Compile Include="Loto\Haug.cs" />
+    <Compile Include="Loto\LinikiILitery\InteligentneRozpoznawanieWzorca.cs" />
+    <Compile Include="Loto\LinikiILitery\ObszarWzgledny.cs" />
+    <Compile Include="Loto\LinikiILitery\ZlepianieLiterPoziome.cs" />
+    <Compile Include="Loto\Matematyka\FiguraZOdcinków.cs" />
+    <Compile Include="Loto\Matematyka\WIelomian.cs" />
+    <Compile Include="Loto\SiecNeuronowa\OpakowanieSieci.cs" />
+    <Compile Include="Loto\Programowanie Ogólne\ListaZPorównywaniem.cs" />
+    <Compile Include="Loto\Matematyka\DoKwadratów.cs" />
+    <Compile Include="Loto\LinikiILitery\Linika.cs" />
+    <Compile Include="Loto\LinikiILitery\LinikaWzgledna.cs" />
+    <Compile Include="Loto\Formatki\LotoWyniki.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loto\Formatki\LotoWyniki.Designer.cs">
       <DependentUpon>LotoWyniki.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rozpoznawanie Kuponu\EkstraPensja.cs" />
-    <Compile Include="Graf.cs" />
-    <Compile Include="Formatki\Liniki.cs">
+    <Compile Include="Loto\LinikiILitery\RodzielanieLiter.cs" />
+    <Compile Include="Loto\Rozpoznawanie Kuponu\EkstraPensja.cs" />
+    <Compile Include="Loto\Matematyka\Graf.cs" />
+    <Compile Include="Loto\Formatki\Liniki.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formatki\Liniki.Designer.cs">
+    <Compile Include="Loto\Formatki\Liniki.Designer.cs">
       <DependentUpon>Liniki.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rozpoznawanie Kuponu\Loto.cs" />
-    <Compile Include="NaTabliceFloat.cs" />
-    <Compile Include="Nieurzywane\Obrócenie.cs" />
-    <Compile Include="Formatki\Obrazek.cs">
+    <Compile Include="Loto\Rozpoznawanie Kuponu\Loto.cs" />
+    <Compile Include="Loto\SiecNeuronowa\NaTabliceFloat.cs" />
+    <Compile Include="Loto\Formatki\Obrazek.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formatki\Obrazek.Designer.cs">
+    <Compile Include="Loto\Formatki\Obrazek.Designer.cs">
       <DependentUpon>Obrazek.cs</DependentUpon>
     </Compile>
-    <Compile Include="ObszarObrazu.cs" />
-    <Compile Include="OperacjeNaStrumieniu.cs" />
-    <Compile Include="Filtry.cs" />
-    <Compile Include="Formatki\Form1.cs">
+    <Compile Include="Loto\ObszarObrazu.cs" />
+    <Compile Include="Loto\OperacjeNaStrumieniu.cs" />
+    <Compile Include="Loto\Filtry.cs" />
+    <Compile Include="Loto\Formatki\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formatki\Form1.Designer.cs">
+    <Compile Include="Loto\Formatki\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Matematyka\Matematyka.cs" />
-    <Compile Include="Nieurzywane\PaletaBarw.cs" />
-    <Compile Include="PodziałLinik.cs" />
+    <Compile Include="Loto\Matematyka\Matematyka.cs" />
+    <Compile Include="Loto\Nieurzywane\PaletaBarw.cs" />
+    <Compile Include="Loto\LinikiILitery\PodziałLinik.cs" />
+    <Compile Include="Loto\SprawdzenieTrafień.cs" />
     <Compile Include="Począrek\Program.cs" />
-    <Compile Include="Progowania\ProgowanieAdaptacyjne.cs" />
-    <Compile Include="Progowania\Otsu.cs" />
-    <Compile Include="Progowania\ProgowanieGradientowe.cs" />
+    <Compile Include="Loto\Progowania\ProgowanieAdaptacyjne.cs" />
+    <Compile Include="Loto\Progowania\Otsu.cs" />
+    <Compile Include="Loto\Progowania\ProgowanieGradientowe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Formatki\PrzeglądOdcinków.cs">
+    <Compile Include="Loto\Formatki\PrzeglądOdcinków.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Formatki\PrzeglądOdcinków.Designer.cs">
+    <Compile Include="Loto\Formatki\PrzeglądOdcinków.Designer.cs">
       <DependentUpon>PrzeglądOdcinków.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rozpoznawanie Kuponu\MultiMulti.cs" />
-    <Compile Include="Rozpoznawanie Kuponu\RozpoznawanieKuponu.cs" />
-    <Compile Include="RozszerzeniaObrazu.cs" />
-    <Compile Include="SiecNeuronowa\Form1.cs">
+    <Compile Include="Loto\Rozpoznawanie Kuponu\MultiMulti.cs" />
+    <Compile Include="Loto\Rozpoznawanie Kuponu\RozpoznawanieKuponu.cs" />
+    <Compile Include="Loto\RozszerzeniaObrazu.cs" />
+    <Compile Include="Loto\Formatki\WzorceSieci.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SiecNeuronowa\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Loto\Formatki\WzorceSieci.Designer.cs">
+      <DependentUpon>WzorceSieci.cs</DependentUpon>
     </Compile>
-    <Compile Include="SiecNeuronowa\ISiećNeuronowa.cs" />
-    <Compile Include="SiecNeuronowa\ObrazDoPorównywania.cs" />
-    <Compile Include="SiecNeuronowa\KwadratRóźnic.cs" />
-    <Compile Include="SiecNeuronowa\Obrócenia.cs" />
-    <Compile Include="SiecNeuronowa\ProsteDodawanie.cs" />
-    <Compile Include="SiecNeuronowa\SieciRywalizujące.cs" />
-    <Compile Include="SiecNeuronowa\UczenieSieci.cs">
+    <Compile Include="Loto\SiecNeuronowa\ISiećNeuronowa.cs" />
+    <Compile Include="Loto\SiecNeuronowa\ObrazDoPorównywania.cs" />
+    <Compile Include="Loto\SiecNeuronowa\KwadratRóźnic.cs" />
+    <Compile Include="Loto\SiecNeuronowa\Obrócenia.cs" />
+    <Compile Include="Loto\SiecNeuronowa\ProsteDodawanie.cs" />
+    <Compile Include="Loto\SiecNeuronowa\SieciRywalizujące.cs" />
+    <Compile Include="Loto\Formatki\UczenieSieci.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SiecNeuronowa\UczenieSieci.Designer.cs">
+    <Compile Include="Loto\Formatki\UczenieSieci.Designer.cs">
       <DependentUpon>UczenieSieci.cs</DependentUpon>
     </Compile>
-    <Compile Include="StałeGlobalne.cs" />
-    <Compile Include="TymczasoweSkrypty.cs" />
-    <Compile Include="Matematyka\wariancja.cs" />
-    <Compile Include="WstepnePrzygotowanie.cs" />
-    <Compile Include="Wyrównaj.cs" />
-    <Compile Include="Programowanie Ogólne\XML.cs" />
-    <Compile Include="ZapisLiniejk.cs" />
-    <Compile Include="ZlepianieLinijek.cs" />
-    <Compile Include="ZmianaWIelkości.cs" />
-    <EmbeddedResource Include="Formatki\Danecs.resx">
+    <Compile Include="Loto\StałeGlobalne.cs" />
+    <Compile Include="Loto\TymczasoweSkrypty.cs" />
+    <Compile Include="Loto\Matematyka\wariancja.cs" />
+    <Compile Include="Loto\WstepnePrzygotowanie.cs" />
+    <Compile Include="Loto\Wyrównaj.cs" />
+    <Compile Include="Loto\Programowanie Ogólne\XML.cs" />
+    <Compile Include="Loto\LinikiILitery\ZapisLiniejk.cs" />
+    <Compile Include="Loto\LinikiILitery\ZlepianieLinijek.cs" />
+    <Compile Include="Loto\ZmianaWIelkości.cs" />
+    <Compile Include="Loto\Formatki\SprawdzanieLotka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Loto\Formatki\SprawdzanieLotka.Designer.cs">
+      <DependentUpon>SprawdzanieLotka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Loto\LinikiILitery\ZlepianieLiterRzutami.cs" />
+    <Compile Include="Loto\SprawdzanieWypełnienia.cs" />
+    <EmbeddedResource Include="Loto\Formatki\Danecs.resx">
       <DependentUpon>Danecs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formatki\Form1.resx">
+    <EmbeddedResource Include="Loto\Formatki\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formatki\Liniki.resx">
+    <EmbeddedResource Include="Loto\Formatki\Liniki.resx">
       <DependentUpon>Liniki.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formatki\LotoWyniki.resx">
+    <EmbeddedResource Include="Loto\Formatki\LotoWyniki.resx">
       <DependentUpon>LotoWyniki.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formatki\Obrazek.resx">
+    <EmbeddedResource Include="Loto\Formatki\ModyfikatorPaczek.resx">
+      <DependentUpon>ModyfikatorPaczek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loto\Formatki\Obrazek.resx">
       <DependentUpon>Obrazek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Loto\Formatki\SprawdzanieLotka.resx">
+      <DependentUpon>SprawdzanieLotka.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -190,20 +215,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Formatki\PrzeglądOdcinków.resx">
+    <EmbeddedResource Include="Loto\Formatki\PrzeglądOdcinków.resx">
       <DependentUpon>PrzeglądOdcinków.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SiecNeuronowa\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Loto\Formatki\WzorceSieci.resx">
+      <DependentUpon>WzorceSieci.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SiecNeuronowa\UczenieSieci.resx">
+    <EmbeddedResource Include="Loto\Formatki\UczenieSieci.resx">
       <DependentUpon>UczenieSieci.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="Liniki\Data.linika">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Loto\Liniki\Data.linika">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Liniki\WynikLoto.linika">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Loto\Sieci\siec.tvs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Loto\Sieci\siec.tv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Loto\Liniki\WynikLoto.linika">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,10 +245,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Content Include="Sieci\siec.tvs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Sieci\siecloga.tvs">
+    <Content Include="Loto\Sieci\siecloga.tvs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -227,7 +255,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6 %28x86 i x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -238,10 +266,14 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
-  </Target>
+</Target>
   <Target Name="AfterBuild">
   </Target>
   -->
