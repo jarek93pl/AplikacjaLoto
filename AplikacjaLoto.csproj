@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+    <StartupObject>Loto.OknoLotka</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="SiećNeuronowa\**" />
+    <Compile Remove="Test\**" />
+    <Compile Remove="ŚieciNeuronowe\**" />
+    <EmbeddedResource Remove="SiećNeuronowa\**" />
+    <EmbeddedResource Remove="Test\**" />
+    <EmbeddedResource Remove="ŚieciNeuronowe\**" />
+    <None Remove="SiećNeuronowa\**" />
+    <None Remove="Test\**" />
+    <None Remove="ŚieciNeuronowe\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ConsoleApplication7\ConsoleApplication7\Properties\AssemblyInfo.cs" />
+    <Compile Remove="Loto\Properties\AssemblyInfo.cs" />
+    <Compile Remove="Ustaw\Ustaw\Properties\AssemblyInfo.cs" />
+    <Compile Remove="WizualizacjaSieciSąsiedztwa\WizualizacjaSieciSąsiedztwa\Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ConsoleApplication7\ConsoleApplication7\Properties\AssemblyInfo.cs" />
+    <Content Include="Loto\Properties\AssemblyInfo.cs" />
+    <Content Include="Ustaw\Ustaw\Properties\AssemblyInfo.cs" />
+    <Content Include="WizualizacjaSieciSąsiedztwa\WizualizacjaSieciSąsiedztwa\Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="E:\OneDrive\Pulpit\Apki\Neuro.Learning\Neuro.Learning\Neuro.Learning.csproj" />
+  </ItemGroup>
+
+</Project>

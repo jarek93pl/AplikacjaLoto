@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
-using Bibloteka.Kolekcja;
 namespace ConsoleApplication7
 {
     class Program
@@ -116,7 +115,7 @@ namespace ConsoleApplication7
         public static IEnumerable<Color> Piksele(Bitmap b)
         {
             int l = b.Width * b.Height;
-            ListaBezKolejnści<Point> Kolekcja = new ListaBezKolejnści<Point>(l);
+            List<Point> Kolekcja = new List<Point>(l);
             for (int i = 0; i < b.Width; i++)
             {
                 for (int j = 0; j < b.Height; j++)

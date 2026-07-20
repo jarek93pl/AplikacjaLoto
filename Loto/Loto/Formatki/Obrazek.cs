@@ -21,6 +21,7 @@ namespace Loto
         {
 
         }
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Bitmap Obraz
         {
             set
