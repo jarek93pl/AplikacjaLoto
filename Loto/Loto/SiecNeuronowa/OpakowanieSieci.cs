@@ -39,7 +39,7 @@ namespace Loto
 
         public float SprawdźNajbliszy(float[] tb, out T Najblisz, out float[] Najblisze)
         {
-            double[] d = new double[tb.Length];
+            float[] d = new float[tb.Length];
             for (int i = 0; i < tb.Length; i++)
             {
                 d[i] = tb[i];

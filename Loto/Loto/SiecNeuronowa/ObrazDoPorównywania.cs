@@ -51,11 +51,11 @@ namespace ŚieciNeuronowe
                 return WstepnePrzygotowanie.WskaźnikNaObraz(Obraz, Rozmiar.Width, Rozmiar.Height);
             }
         }
-        public double[] NaJedenWymiar
+        public float[] NaJedenWymiar
         {
             get
             {
-                double[] f = new double[64];
+                float[] f = new float[64];
                 int p = 0;
                 for (int i = 0; i < 8; i++)
                 {

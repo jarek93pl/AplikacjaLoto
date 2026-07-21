@@ -21,7 +21,7 @@ namespace ŚieciNeuronowe
         {
             InitializeComponent();
         }
-        public static void PrzesóńWMinus(double[] tb, double Minus)
+        public static void PrzesóńWMinus(float[] tb, float Minus)
         {
             for (int i = 0; i < tb.Length; i++)
             {
@@ -47,13 +47,13 @@ namespace ŚieciNeuronowe
                 {
                     s.Add(item.Name);
                     FileInfo[] fi = item.GetFiles();
-                    double[] wyjście = StwórzyWyjscie(j, drt.Length);
+                    float[] wyjście = StwórzyWyjscie(j, drt.Length);
                     for (int i = 0; i < fi.Length; i++)
                     {
                         TabelaUcząca tb = new TabelaUcząca();
                         var a = new ObrazDoPorównywania(fi[i].FullName, Convert.ToSingle(textBox9.Text));
                         tb.Wejście = a.NaJedenWymiar;
-                        PrzesóńWMinus(tb.Wejście, 0.2);
+                        PrzesóńWMinus(tb.Wejście, 0.2f);
                         tb.WejścieFloat = a.NaJedenWymiarfloat;
                         tb.Nr = j;
                         tb.Nazwa = item.Name;
@@ -72,9 +72,9 @@ namespace ŚieciNeuronowe
             sw.Close();
         }
 
-        public static double[] StwórzyWyjscie(int nr, int max)
+        public static float[] StwórzyWyjscie(int nr, int max)
         {
-            double[] m = new double[max + 1];
+            float[] m = new float[max + 1];
             for (int i = 0; i < m.Length; i++)
             {
                 if (nr == i)
@@ -90,7 +90,7 @@ namespace ŚieciNeuronowe
         }
         class TabelaUcząca
         {
-            public double[] Wejście, Wyjście;
+            public float[] Wejście, Wyjście;
             public float[] WejścieFloat;
             public int Nr;
             public string Nazwa;
@@ -98,7 +98,7 @@ namespace ŚieciNeuronowe
         class WynikNeuroneowej
         {
             public int Poprawne;
-            public double błąd;
+            public float błąd;
             public static string Drukuj(List<WynikNeuroneowej> x)
             {
                 return $"max {x.Max(t => t.Poprawne)} min {x.Min(t => t.Poprawne)} avg{x.Average(t => t.Poprawne)} bład {x.Average(t => t.błąd)} ";
@@ -114,7 +114,7 @@ namespace ŚieciNeuronowe
             Random r = new Random();
             int Najlepsza = 0;
             int Długość = 0, IlośćPetli = 0;
-            double WSPUczenia = 0, WspPendu = 0, Bias = 0;
+            float WSPUczenia = 0, WspPendu = 0, Bias = 0;
             float OstatniaPróbaUcząca, UczeniePopranego; try
             {
 
@@ -154,7 +154,7 @@ namespace ŚieciNeuronowe
                         float Współczynik = ((float)(Długość - j)) / Długość;
                         teacher.LearningRate = WSPUczenia * Współczynik + OstatniaPróbaUcząca;
                         TabelaUcząca rt = ZbiórUczący[r.Next(ZbiórUczący.Count)];
-                        double[] UczWyjście = (double[])rt.Wyjście.Clone();
+                        float[] UczWyjście = (float[])rt.Wyjście.Clone();
                         int p = 0;
                         bool CzyPoprawny;
                         while (p++ < Maks)
@@ -179,13 +179,13 @@ namespace ŚieciNeuronowe
 
                     }
                     int IlośćPoprawnych = 0;
-                    double Odhylenie = 0;
+                    float Odhylenie = 0;
                     StreamWriter sw = null;
                     if (checkBox2.Checked)
                         sw = new StreamWriter(new FileStream($"zap{i}.txt", FileMode.Create));
                     foreach (var item in ZbiórUczący)
                     {
-                        double[] tb = network.Compute(item.Wejście);
+                        float[] tb = network.Compute(item.Wejście);
                         Odhylenie += OdchylenieStadardowe(tb, item.Wyjście);
                         if (Loto.Matematyka.ZnajdźMaksymalną(tb) == item.Nr) IlośćPoprawnych++;
                         foreach (var item2 in ListaNajlepszych(tb))
@@ -206,7 +206,7 @@ namespace ŚieciNeuronowe
                     }
 
                     wk.Add(new WynikNeuroneowej() { błąd = Odhylenie, Poprawne = IlośćPoprawnych });
-                    listBox1.Invoke(new TR(() => { listBox1.Items.Add(IlośćPoprawnych.ToString() + " odchylenie stadardowe " + Odhylenie + "time(ms)" + stopwatch.ElapsedMilliseconds); }));
+                    listBox1.Invoke(new TR(() => { listBox1.Items.Add("corect :" + IlośćPoprawnych.ToString() + "time(ms) " + stopwatch.ElapsedMilliseconds + " standard deviation " + Odhylenie); }));
                 }
                 this.Invoke(new TR(() => { this.Text = WynikNeuroneowej.Drukuj(wk); }));
             }));
@@ -214,20 +214,20 @@ namespace ŚieciNeuronowe
 
         }
 
-        private void Pobierz(out int Długość, out int IlośćPetli, out double WSPUczenia, out double WspPendu, out double Bias, out float OstatniaPróbaUcząca, out float UczeniePopranego)
+        private void Pobierz(out int Długość, out int IlośćPetli, out float WSPUczenia, out float WspPendu, out float Bias, out float OstatniaPróbaUcząca, out float UczeniePopranego)
         {
             Długość = Convert.ToInt32(textBox3.Text);
             IlośćPetli = Convert.ToInt32(textBox4.Text);
-            WSPUczenia = Convert.ToDouble(textBox1.Text);
-            WspPendu = Convert.ToDouble(textBox2.Text);
-            Bias = Convert.ToDouble(textBox5.Text);
+            WSPUczenia = Convert.ToSingle(textBox1.Text);
+            WspPendu = Convert.ToSingle(textBox2.Text);
+            Bias = Convert.ToSingle(textBox5.Text);
             OstatniaPróbaUcząca = Convert.ToSingle(textBox7.Text);
             UczeniePopranego = Convert.ToSingle(textBox8.Text);
         }
 
-        public static List<double> ListaNajlepszych(double[] wejście)
+        public static List<float> ListaNajlepszych(float[] wejście)
         {
-            List<double> t = new List<double>(3);
+            List<float> t = new List<float>(3);
             foreach (var item in wejście)
             {
                 t.Add(item);
@@ -240,19 +240,19 @@ namespace ŚieciNeuronowe
             }
             return t;
         }
-        private ActivationNetwork KontrukcjaSieci(double Bias)
+        private ActivationNetwork KontrukcjaSieci(float Bias)
         {
             return new ActivationNetwork(new SigmoidFunction(Bias), 64, 64, s.Count);
         }
-        public static double OdchylenieStadardowe(double[] a, double[] b)
+        public static float OdchylenieStadardowe(float[] a, float[] b)
         {
-            double zw = 0;
+            float zw = 0;
             for (int i = 0; i < a.Length; i++)
             {
-                double delta = a[i] - b[i];
+                float delta = a[i] - b[i];
                 zw += delta * delta;
             }
-            return Math.Sqrt(zw / a.Length);
+            return (float)Math.Sqrt(zw / a.Length);
         }
 
         string nam = null;
@@ -289,7 +289,7 @@ namespace ŚieciNeuronowe
                 foreach (var item in ZbiórUczący)
                 {
                     int Kierunek = 0;
-                    if (Obroty.SprawdźStronyZKompresją(item.Wejście, out Kierunek) == item.Nazwa) Wynik++;
+                    if (Obroty.SprawdźStronyZKompresją(item.Wejście.Cast<double>().ToArray(), out Kierunek) == item.Nazwa) Wynik++;
                 }
                 listBox1.Items.Add(Wynik);
             }

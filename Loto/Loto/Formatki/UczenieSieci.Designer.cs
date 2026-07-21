@@ -162,7 +162,7 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(164, 31);
             textBox3.TabIndex = 9;
-            textBox3.Text = "1000";
+            textBox3.Text = "2000000";
             // 
             // openFileDialog1
             // 

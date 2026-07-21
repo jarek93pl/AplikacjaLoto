@@ -8,15 +8,19 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
     <StartupObject>Loto.SiećNeuronowaUczenie</StartupObject>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Loto\obj\**" />
     <Compile Remove="SiećNeuronowa\**" />
     <Compile Remove="Test\**" />
     <Compile Remove="ŚieciNeuronowe\**" />
+    <EmbeddedResource Remove="Loto\obj\**" />
     <EmbeddedResource Remove="SiećNeuronowa\**" />
     <EmbeddedResource Remove="Test\**" />
     <EmbeddedResource Remove="ŚieciNeuronowe\**" />
+    <None Remove="Loto\obj\**" />
     <None Remove="SiećNeuronowa\**" />
     <None Remove="Test\**" />
     <None Remove="ŚieciNeuronowe\**" />

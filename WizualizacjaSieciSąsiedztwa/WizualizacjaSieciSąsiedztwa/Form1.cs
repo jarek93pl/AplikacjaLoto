@@ -261,7 +261,7 @@ namespace WizualizacjaSieciSąsiedztwa
                 foreach (var item in listaOsób)
                 {
 
-                    double[] ftp = new double[listaOsób.Count];
+                    float[] ftp = new float[listaOsób.Count];
                     ftp[R] = 1;
                     R++;
                     foreach (var item2 in item)
@@ -280,7 +280,7 @@ namespace WizualizacjaSieciSąsiedztwa
             {
                 for (int j = 0; j < WIelkość.Height; j++)
                 {
-                    double[] t = new double[] { (Skx * i)-0.5f, (Sky * j)-0.5f };
+                    float[] t = new float[] { (Skx * i)-0.5f, (Sky * j)-0.5f };
                     Mapa[i, j] = SprawdźPewnośćSieci(Sieć.Compute(t));
                 }
             }
@@ -290,7 +290,7 @@ namespace WizualizacjaSieciSąsiedztwa
 
             
         }
-        public static int SprawdźPewnośćSieci(double[] t)
+        public static int SprawdźPewnośćSieci(float[] t)
         {
             Array.Sort(t);
             return (int)(255 * (t.Last() - t[t.Length -2]));
