@@ -5,9 +5,9 @@ VisualStudioVersion = 17.14.37502.11
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplikacjaLoto", "AplikacjaLoto.csproj", "{B259F373-9D0C-9A65-B81B-5914F30A59C9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neuro.Learning", "E:\OneDrive\Pulpit\Apki\Neuro.Learning\Neuro.Learning\Neuro.Learning.csproj", "{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProjectLottoAplication", "..\TestProjectLottoAplication\TestProjectLottoAplication.csproj", "{1540ADB1-AEC9-4A71-8512-23A2797B22BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Neuro.Learning", "E:\OneDrive\Pulpit\Apki\Neuro.Learning\Neuro.Learning\Neuro.Learning.csproj", "{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,6 @@ Global
 		{B259F373-9D0C-9A65-B81B-5914F30A59C9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B259F373-9D0C-9A65-B81B-5914F30A59C9}.Release|x64.ActiveCfg = Release|x64
 		{B259F373-9D0C-9A65-B81B-5914F30A59C9}.Release|x64.Build.0 = Release|x64
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|x64.ActiveCfg = Debug|x64
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|x64.Build.0 = Debug|x64
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|x64.ActiveCfg = Release|x64
-		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|x64.Build.0 = Release|x64
 		{1540ADB1-AEC9-4A71-8512-23A2797B22BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1540ADB1-AEC9-4A71-8512-23A2797B22BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1540ADB1-AEC9-4A71-8512-23A2797B22BE}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -41,6 +33,14 @@ Global
 		{1540ADB1-AEC9-4A71-8512-23A2797B22BE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1540ADB1-AEC9-4A71-8512-23A2797B22BE}.Release|x64.ActiveCfg = Release|Any CPU
 		{1540ADB1-AEC9-4A71-8512-23A2797B22BE}.Release|x64.Build.0 = Release|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Debug|x64.Build.0 = Debug|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|x64.ActiveCfg = Release|Any CPU
+		{FD71C4D4-BA65-3306-D551-06DAE04BBB3B}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
