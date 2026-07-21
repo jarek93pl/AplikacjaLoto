@@ -12,6 +12,7 @@ using AForge.Neuro;
 using AForge.Neuro.Learning;
 using System.Threading;
 using Loto.SiecNeuronowa;
+using System.Diagnostics;
 namespace ŚieciNeuronowe
 {
     public partial class UczenieSieci : Form
@@ -20,7 +21,7 @@ namespace ŚieciNeuronowe
         {
             InitializeComponent();
         }
-        public static void PrzesóńWMinus(double[] tb,double Minus)
+        public static void PrzesóńWMinus(double[] tb, double Minus)
         {
             for (int i = 0; i < tb.Length; i++)
             {
@@ -36,8 +37,9 @@ namespace ŚieciNeuronowe
         List<string> s = new List<string>();
         private void button1_Click(object sender, EventArgs e)
         {
-            if (folderBrowserDialog1.ShowDialog()==DialogResult.OK)
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
+                button2.Enabled = button4.Enabled = button5.Enabled = true;
                 DirectoryInfo dr = new DirectoryInfo(folderBrowserDialog1.SelectedPath);
                 DirectoryInfo[] drt = dr.GetDirectories();
                 int j = 0;
@@ -49,7 +51,7 @@ namespace ŚieciNeuronowe
                     for (int i = 0; i < fi.Length; i++)
                     {
                         TabelaUcząca tb = new TabelaUcząca();
-                        var a = new ObrazDoPorównywania(fi[i].FullName,Convert.ToSingle(textBox9.Text));
+                        var a = new ObrazDoPorównywania(fi[i].FullName, Convert.ToSingle(textBox9.Text));
                         tb.Wejście = a.NaJedenWymiar;
                         PrzesóńWMinus(tb.Wejście, 0.2);
                         tb.WejścieFloat = a.NaJedenWymiarfloat;
@@ -69,13 +71,13 @@ namespace ŚieciNeuronowe
             }
             sw.Close();
         }
-     
-        public static double[] StwórzyWyjscie(int nr,int max)
+
+        public static double[] StwórzyWyjscie(int nr, int max)
         {
-            double[] m = new double[max+1];
+            double[] m = new double[max + 1];
             for (int i = 0; i < m.Length; i++)
             {
-                if (nr==i)
+                if (nr == i)
                 {
                     m[i] = 1;
                 }
@@ -99,21 +101,20 @@ namespace ŚieciNeuronowe
             public double błąd;
             public static string Drukuj(List<WynikNeuroneowej> x)
             {
-                return $"max {x.Max(t=>t.Poprawne)} min {x.Min(t => t.Poprawne)} avg{x.Average(t=>t.Poprawne)} bład {x.Average(t=>t.błąd)}";
+                return $"max {x.Max(t => t.Poprawne)} min {x.Min(t => t.Poprawne)} avg{x.Average(t => t.Poprawne)} bład {x.Average(t => t.błąd)} ";
             }
         }
         public delegate void TR();
         Thread t;
         bool UczPoprawne = true;
-         int Maks= 2;
+        int Maks = 2;
         private void button2_Click(object sender, EventArgs e)
         {
-
             List<WynikNeuroneowej> wk = new List<WynikNeuroneowej>();
             Random r = new Random();
             int Najlepsza = 0;
-            int Długość=0, IlośćPetli=0;
-            double WSPUczenia=0, WspPendu=0, Bias=0;
+            int Długość = 0, IlośćPetli = 0;
+            double WSPUczenia = 0, WspPendu = 0, Bias = 0;
             float OstatniaPróbaUcząca, UczeniePopranego; try
             {
 
@@ -130,6 +131,7 @@ namespace ŚieciNeuronowe
             {
                 for (int i = 0; i < IlośćPetli; i++)
                 {
+                    System.Diagnostics.Stopwatch stopwatch = Stopwatch.StartNew();
 
                     ActivationNetwork network = null;
                     if (DomyślnaSiec == null)
@@ -204,11 +206,12 @@ namespace ŚieciNeuronowe
                     }
 
                     wk.Add(new WynikNeuroneowej() { błąd = Odhylenie, Poprawne = IlośćPoprawnych });
-                    listBox1.Invoke(new TR(() => { listBox1.Items.Add(IlośćPoprawnych.ToString() + " odchylenie stadardowe " + Odhylenie); }));
+                    listBox1.Invoke(new TR(() => { listBox1.Items.Add(IlośćPoprawnych.ToString() + " odchylenie stadardowe " + Odhylenie + "time(ms)" + stopwatch.ElapsedMilliseconds); }));
                 }
                 this.Invoke(new TR(() => { this.Text = WynikNeuroneowej.Drukuj(wk); }));
             }));
             t.Start();
+
         }
 
         private void Pobierz(out int Długość, out int IlośćPetli, out double WSPUczenia, out double WspPendu, out double Bias, out float OstatniaPróbaUcząca, out float UczeniePopranego)
@@ -229,7 +232,7 @@ namespace ŚieciNeuronowe
             {
                 t.Add(item);
                 t.Sort();
-                if (t.Count>2)
+                if (t.Count > 2)
                 {
                     t.RemoveAt(0);
                 }
@@ -239,9 +242,9 @@ namespace ŚieciNeuronowe
         }
         private ActivationNetwork KontrukcjaSieci(double Bias)
         {
-            return new ActivationNetwork(new SigmoidFunction(Bias), 64,64, 64, s.Count);
+            return new ActivationNetwork(new SigmoidFunction(Bias), 64, 64, s.Count);
         }
-        public static double OdchylenieStadardowe(double[] a,double[] b)
+        public static double OdchylenieStadardowe(double[] a, double[] b)
         {
             double zw = 0;
             for (int i = 0; i < a.Length; i++)
@@ -256,24 +259,19 @@ namespace ŚieciNeuronowe
         ActivationNetwork DomyślnaSiec = null;
         private void button3_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog()==DialogResult.OK)
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 nam = openFileDialog1.FileName;
-                DomyślnaSiec =(ActivationNetwork) Network.Load(openFileDialog1.FileName);
-           
+                DomyślnaSiec = (ActivationNetwork)Network.Load(openFileDialog1.FileName);
+
             }
         }
-        
+
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void UczenieSieci_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            if(t!=null)
-            t.Abort();
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -291,7 +289,7 @@ namespace ŚieciNeuronowe
                 foreach (var item in ZbiórUczący)
                 {
                     int Kierunek = 0;
-                    if ( Obroty.SprawdźStronyZKompresją(item.Wejście, out Kierunek)==item.Nazwa) Wynik++;
+                    if (Obroty.SprawdźStronyZKompresją(item.Wejście, out Kierunek) == item.Nazwa) Wynik++;
                 }
                 listBox1.Items.Add(Wynik);
             }
@@ -302,20 +300,21 @@ namespace ŚieciNeuronowe
             List<WynikNeuroneowej> wk = new List<WynikNeuroneowej>();
             Random r = new Random();
 
-            int Długość=0;
-            int IlośćPetli=0;
+            int Długość = 0;
+            int IlośćPetli = 0;
             int Najlepsza = 0; try
             {
 
                 Długość = Convert.ToInt32(textBox3.Text);
-                 IlośćPetli = Convert.ToInt32(textBox4.Text);
+                IlośćPetli = Convert.ToInt32(textBox4.Text);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("źle wpisane dane "+ex.Message);
+                MessageBox.Show("źle wpisane dane " + ex.Message);
                 return;
             }
             listBox1.Items.Clear();
+
             t = new Thread(new ThreadStart(() =>
             {
                 for (int i = 0; i < IlośćPetli; i++)
@@ -337,7 +336,7 @@ namespace ŚieciNeuronowe
                     wk.Add(new WynikNeuroneowej() { Poprawne = IlośćPoprawnych });
                     if (Najlepsza < IlośćPoprawnych)
                     {
-                        tb.Zapisz(Loto.StałeGlobalne.NazwaPlikuRywalizującejSieci+"uczenie",Zapis);
+                        tb.Zapisz(Loto.StałeGlobalne.NazwaPlikuRywalizującejSieci + "uczenie", Zapis);
                         Najlepsza = IlośćPoprawnych;
                         Console.WriteLine(IlośćPoprawnych);
                         listBox1.Invoke(new TR(() => { listBox1.Items.Add(IlośćPoprawnych.ToString()); }));
