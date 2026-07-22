@@ -7,7 +7,7 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <StartupObject>Loto.SiećNeuronowaUczenie</StartupObject>
+    <StartupObject>Loto.OknoLotka</StartupObject>
     <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
@@ -34,7 +34,30 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Loto\Loto\Liniki\Data.linika" />
+    <None Remove="Loto\Loto\Liniki\WynikLoto.linika" />
+    <None Remove="Loto\Loto\Sieci\siec.tv" />
+    <None Remove="Loto\Loto\Sieci\siec.tvs" />
+    <None Remove="Loto\Loto\Sieci\siecloga.tvs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="ConsoleApplication7\ConsoleApplication7\Properties\AssemblyInfo.cs" />
+    <Content Include="Loto\Loto\Liniki\Data.linika">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Loto\Loto\Liniki\WynikLoto.linika">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Loto\Loto\Sieci\siec.tv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Loto\Loto\Sieci\siec.tvs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Loto\Loto\Sieci\siecloga.tvs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Loto\Properties\AssemblyInfo.cs" />
     <Content Include="Ustaw\Ustaw\Properties\AssemblyInfo.cs" />
     <Content Include="WizualizacjaSieciSąsiedztwa\WizualizacjaSieciSąsiedztwa\Properties\AssemblyInfo.cs" />

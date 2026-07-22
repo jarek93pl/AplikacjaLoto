@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 using System.Drawing;
 namespace Loto
 {
-    public class LotoWynik:Wynik
+    public class LotoWynik : Wynik
     {
 
         static LinikaWzgledna WynikLotoWzór;
         const float MinimalnePodobieństwoWyniku = 6f;
         bool plus;
-         static LotoWynik()
+        static LotoWynik()
         {
 
-            if (WynikLotoWzór==null)
+            if (WynikLotoWzór == null)
             {
-                WynikLotoWzór = MałeUproszczenia.WczytajXML<LinikaWzgledna>("Loto\\Liniki\\WynikLoto.linika");
+                WynikLotoWzór = MałeUproszczenia.WczytajXML<LinikaWzgledna>("Loto\\Loto\\Liniki\\WynikLoto.linika");
                 WynikLotoWzór.PrzygotujSzablon();
             }
         }
@@ -39,7 +39,7 @@ namespace Loto
                 plus = value;
             }
         }
-        public LotoWynik():base(RodzajKuponuEnum.Loto)
+        public LotoWynik() : base(RodzajKuponuEnum.Loto)
         {
             PrógZłegoWYniku = 2400;
         }
@@ -63,7 +63,7 @@ namespace Loto
                     {
                         NajlepszyWynik = Podobieństwo;
                         item.DopasujProporcje(Binaryn, DługośćWiersza);
-                        NajlepszyString =item.NajlepszeDopasowanieDoLiniki .UstalOdpowiednie(item, StałeGlobalne.DopuszalneOdalenieOdWzorca, RozpoznawanieKuponu.DzienikZamian, WspółczynikUsunieci);
+                        NajlepszyString = item.NajlepszeDopasowanieDoLiniki.UstalOdpowiednie(item, StałeGlobalne.DopuszalneOdalenieOdWzorca, RozpoznawanieKuponu.DzienikZamian, WspółczynikUsunieci);
                     }
                 }
             }
@@ -73,6 +73,6 @@ namespace Loto
             }
         }
 
-        
+
     }
 }

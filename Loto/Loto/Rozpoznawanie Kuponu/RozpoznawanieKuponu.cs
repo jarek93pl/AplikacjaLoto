@@ -15,17 +15,17 @@ using System.Runtime.InteropServices;
 
 namespace Loto
 {
-    
+
     public unsafe static class RozpoznawanieKuponu
     {
 
-        struct OcenaProstokąta:IComparable<OcenaProstokąta>
+        struct OcenaProstokąta : IComparable<OcenaProstokąta>
         {
-            public enum RodzajWykrycie {Lasery,Czestotliwosc,WyrównanieSwiatła, LaseryH, CzestotliwoscH };
+            public enum RodzajWykrycie { Lasery, Czestotliwosc, WyrównanieSwiatła, LaseryH, CzestotliwoscH };
             public RodzajWykrycie Rodzaj;
             public float Ocena;
             public ProstokątNaObrazie Prostokąt;
-            public OcenaProstokąta(ProstokątNaObrazie pro,float Ocena,Size rz,RodzajWykrycie rk)
+            public OcenaProstokąta(ProstokątNaObrazie pro, float Ocena, Size rz, RodzajWykrycie rk)
             {
                 if (!pro.SprawdźDlugosciPrzekotnych())
                 {
@@ -34,15 +34,15 @@ namespace Loto
                 }
                 Prostokąt = pro;
                 this.Ocena = Ocena * pro.SprawdźDlugosciPrzekotnychF();
-              
+
                 Rodzaj = rk;
                 Ocena *= pro.KorektaAOceny();
             }
-        
+
 
             public int CompareTo(OcenaProstokąta other)
             {
-                if (Ocena>20)
+                if (Ocena > 20)
                 {
                     Ocena = -200;
                 }
@@ -50,7 +50,7 @@ namespace Loto
                 {
                     other.Ocena = -200;
                 }
-                double zw =  Ocena- other.Ocena;
+                double zw = Ocena - other.Ocena;
                 zw *= 1000000;
                 return (int)zw;
             }
@@ -59,7 +59,7 @@ namespace Loto
         public static int L = 0;
 #endif
         public static Size Rozmiar;
-        private static unsafe byte* WyodrebnijLoto( Bitmap Dana, ref bool* c,Bitmap Zmiejszony)
+        private static unsafe byte* WyodrebnijLoto(Bitmap Dana, ref bool* c, Bitmap Zmiejszony)
         {
             Size RozmiarZmiejszonego = Zmiejszony.Size;
             List<OcenaProstokąta> Oceny = new List<OcenaProstokąta>();
@@ -71,11 +71,11 @@ namespace Loto
             Lasery = a;
             a = WstepnePrzygotowanie.PobierzNaPodstawieCzestotliwosciCiemne(Zmiejszony);
             Oceny.Add(new OcenaProstokąta(a, WstepnePrzygotowanie.OcenaZaznaczonegoGragmentu(Kopia, c, RozmiarZmiejszonego, a), RozmiarZmiejszonego, OcenaProstokąta.RodzajWykrycie.Czestotliwosc));
-         
+
 
             a = WstepnePrzygotowanie.PobierzNaPodstawieCzestotliwosciJasna(Zmiejszony);
             Oceny.Add(new OcenaProstokąta(a, WstepnePrzygotowanie.OcenaZaznaczonegoGragmentu(Kopia, c, RozmiarZmiejszonego, a), RozmiarZmiejszonego, OcenaProstokąta.RodzajWykrycie.Czestotliwosc));
-            
+
             a = WstepnePrzygotowanie.WyrównianieŚwiatłaCiemne(Zmiejszony);
             Oceny.Add(new OcenaProstokąta(a, WstepnePrzygotowanie.OcenaZaznaczonegoGragmentu(Kopia, c, RozmiarZmiejszonego, a), RozmiarZmiejszonego, OcenaProstokąta.RodzajWykrycie.WyrównanieSwiatła));
 
@@ -84,8 +84,8 @@ namespace Loto
             Oceny.Add(new OcenaProstokąta(a, WstepnePrzygotowanie.OcenaZaznaczonegoGragmentu(Kopia, c, RozmiarZmiejszonego, a), RozmiarZmiejszonego, OcenaProstokąta.RodzajWykrycie.WyrównanieSwiatła));
 
             ProstokątNaObrazie ProstokątZCzęstotliwości = Oceny.FindAll(X => X.Rodzaj == OcenaProstokąta.RodzajWykrycie.Czestotliwosc).Max().Prostokąt;
-            
-            TransformacjaHoug(c, RozmiarZmiejszonego, Oceny, Kopia, Lasery,ProstokątZCzęstotliwości );
+
+            TransformacjaHoug(c, RozmiarZmiejszonego, Oceny, Kopia, Lasery, ProstokątZCzęstotliwości);
 
             OcenaProstokąta ok = Oceny.Max();
             a = ok.Prostokąt;
@@ -119,13 +119,13 @@ namespace Loto
             }
         }
 
-        private static unsafe void TransformacjaHoug(bool* c, Size RozmiarZmiejszonego, List<OcenaProstokąta> Oceny, bool* Kopia,params ProstokątNaObrazie[] Lasery)
+        private static unsafe void TransformacjaHoug(bool* c, Size RozmiarZmiejszonego, List<OcenaProstokąta> Oceny, bool* Kopia, params ProstokątNaObrazie[] Lasery)
         {
             ProstokątNaObrazie a = WstepnePrzygotowanie.KorektaHauga(RozmiarZmiejszonego, c, Lasery.First());
             OcenaProstokąta ok = new OcenaProstokąta(a, WstepnePrzygotowanie.OcenaZaznaczonegoGragmentu(Kopia, c, RozmiarZmiejszonego, a), RozmiarZmiejszonego, OcenaProstokąta.RodzajWykrycie.LaseryH);
-       
+
             Oceny.Add(ok);
-            
+
         }
 
         private static unsafe Bitmap WeźPodląd(bool* c, Size RozmiarZmiejszonego, ProstokątNaObrazie a)
@@ -145,45 +145,45 @@ namespace Loto
 
         private static unsafe void Obróć(ref Bitmap Dana)
         {
-                Dana.RotateFlip(RotateFlipType.Rotate90FlipNone);
-            
+            Dana.RotateFlip(RotateFlipType.Rotate90FlipNone);
+
         }
-        
-       
+
+
         public const int StopieńZmiejszenia = 16;
         public const int WielkośćMaski = 9;
 
         public static double OdleglośćOd;
-        public static unsafe Wynik RozpoznajObraz(out bool* binarny, out Bitmap SamLoto, out Linika[] lab2, Bitmap Dana,out ZdjecieZPozycją Logo,float RozmiarF,int PrógDostosowania)
+        public static unsafe Wynik RozpoznajObraz(out bool* binarny, out Bitmap SamLoto, out Linika[] lab2, Bitmap Dana, out ZdjecieZPozycją Logo, float RozmiarF, int PrógDostosowania)
         {
             GC.Collect();
             Obróć(ref Dana);
-            if(Rozmiar.WielkoścWPix()>PrógDostosowania)
-            DostosujRozmiar(ref Dana, RozmiarF);
+            if (Rozmiar.WielkoścWPix() > PrógDostosowania)
+                DostosujRozmiar(ref Dana, RozmiarF);
             byte* Mon = WeźSamegoLotka(out binarny, Dana);
-            
+
             //c= Otsu.ProgowanieRegionalne(Mon, RozmarLotka, new Size(30,30));
             //-4 -5
 
-            Filtry.FiltMedianowyWieleRdzeni(Rozmiar, Mon,2);
-            binarny = ProgowanieAdaptacyjne.ProgowanieZRamkąRegionalne(Mon, Rozmiar, new Size(6,10),0, WielkośćMaski, -2);
-            
+            Filtry.FiltMedianowyWieleRdzeni(Rozmiar, Mon, 2);
+            binarny = ProgowanieAdaptacyjne.ProgowanieZRamkąRegionalne(Mon, Rozmiar, new Size(6, 10), 0, WielkośćMaski, -2);
+
 
             //binarny = Otsu.ProgowanieRegionalne(Mon,Rozmiar, new Size(8, 8));
 
 
             //pictureBox1.Image = SamLoto;
             //dzielenie na fragmenty 
-            lab2 = PodziałLinik.PodzielNaLiniki(ref binarny,ref Rozmiar, out Logo);
+            lab2 = PodziałLinik.PodzielNaLiniki(ref binarny, ref Rozmiar, out Logo);
             RozpoznawanieKuponu.DzienikZamian = PodziałLinik.Sieć.DzienikZamian;
             SamLoto = WstepnePrzygotowanie.WskaźnikNaObraz(binarny, Rozmiar);
-            Wynik zw= RozpoznawanieKuponu.Rozpoznaj(lab2, Logo, binarny, SamLoto.Width);
-            if ( zw.OdległośćOdPoprawności>zw.PrógZłegoWYniku)
+            Wynik zw = RozpoznawanieKuponu.Rozpoznaj(lab2, Logo, binarny, SamLoto.Width);
+            if (zw.OdległośćOdPoprawności > zw.PrógZłegoWYniku)
             {
-                zw= ProgójZaPomocąRegionalnego(zw,Mon,ref binarny,out lab2);
+                zw = ProgójZaPomocąRegionalnego(zw, Mon, ref binarny, out lab2);
                 SamLoto = WstepnePrzygotowanie.WskaźnikNaObraz(binarny, Rozmiar);
             }
-            Marshal.FreeHGlobal((IntPtr) Mon);
+            Marshal.FreeHGlobal((IntPtr)Mon);
             OdleglośćOd = zw.OdległośćOdPoprawności;
             return zw;
         }
@@ -216,7 +216,7 @@ namespace Loto
             return zw.PrógZłegoWYniku * WymógSklejaniaRzutami < zw.OdległośćOdPoprawności;
         }
 
-        private static unsafe void WykonajLotka(out Wynik zw,ref bool* binarny, out Linika[] lab2,Wynik.RodzajKuponuEnum rk,bool UżywajZlepianiaRzutami)
+        private static unsafe void WykonajLotka(out Wynik zw, ref bool* binarny, out Linika[] lab2, Wynik.RodzajKuponuEnum rk, bool UżywajZlepianiaRzutami)
         {
             ZdjecieZPozycją Logo;
             Rozmiar.Height -= WielkośćMaski * 4 + 1;
@@ -227,7 +227,7 @@ namespace Loto
             zw.ZnajdźOdległość(lab2);
         }
 
-        
+
 
         public static unsafe Wynik Rozpoznaj(string s)
         {
@@ -235,14 +235,14 @@ namespace Loto
             Bitmap b;
             Linika[] lk;
             ZdjecieZPozycją zp;
-            Wynik w = RozpoznawanieKuponu.RozpoznajObraz(out br, out b, out lk, new Bitmap(s), out zp,5000000,8600000);
+            Wynik w = RozpoznawanieKuponu.RozpoznajObraz(out br, out b, out lk, new Bitmap(s), out zp, 5000000, 8600000);
             Marshal.FreeHGlobal((IntPtr)br);
             return w;
         }
         private static void DostosujRozmiar(ref Bitmap dana, float rozmiar)
         {
             float TenRozmiar = dana.Width * dana.Height;
-            if (rozmiar!=0)
+            if (rozmiar != 0)
             {
                 float Skalare = rozmiar / TenRozmiar;
                 dana = new Bitmap(dana, dana.Size.Skaluj(Skalare));
@@ -254,7 +254,7 @@ namespace Loto
         {
             Size RozmiarZmiejszonego = new Size(Dana.Width / StopieńZmiejszenia, Dana.Height / StopieńZmiejszenia);
             Bitmap Zmiejszony = new Bitmap(Dana, RozmiarZmiejszonego);
-            Bitmap DoSkalowaniaBitmap = new Bitmap(Dana,WielkośćDoSkalowaniaKrawedzi );
+            Bitmap DoSkalowaniaBitmap = new Bitmap(Dana, WielkośćDoSkalowaniaKrawedzi);
             //WyrównajŚwiatło( Zmiejszony,ref Dana);
             byte* MonWstepny = OperacjeNaStrumieniu.PonierzMonohormatyczny(Zmiejszony);
             //byte* MonPoCzestoliwosciach = WstepnePrzygotowanie.ZmieńPoCzestotliwosciach(Zmiejszony);
@@ -262,7 +262,7 @@ namespace Loto
             Otsu.WykryjKrawedzie(RozmiarZmiejszonego, MonWstepny);
             //Otsu.WykryjKrawedzie(RozmiarZmiejszonego, MonPoCzestoliwosciach);
             Otsu.WykryjKrawedzie(WielkośćDoSkalowaniaKrawedzi, DoSkalowaniaKrawedziByte);
-            float[,] TablicaSkalująca = Otsu.PobierzTabliceSKalującom(DoSkalowaniaKrawedziByte, WielkośćDoSkalowaniaKrawedzi, 1.8f,0.8f);
+            float[,] TablicaSkalująca = Otsu.PobierzTabliceSKalującom(DoSkalowaniaKrawedziByte, WielkośćDoSkalowaniaKrawedzi, 1.8f, 0.8f);
             //OperacjeNaStrumieniu.Dodaj(MonWstepny, MonPoCzestoliwosciach, Zmiejszony.Size.Width * Zmiejszony.Size.Height);
             Otsu.Skaluj(TablicaSkalująca, MonWstepny, RozmiarZmiejszonego);
             Marshal.FreeHGlobal((IntPtr)DoSkalowaniaKrawedziByte);
@@ -271,13 +271,13 @@ namespace Loto
 #if DEBUG
             new Bitmap(WstepnePrzygotowanie.WskaźnikNaObraz(binarny, RozmiarZmiejszonego.Width, RozmiarZmiejszonego.Height)).Save(L + "t.jpg");
 # endif
-            return WyodrebnijLoto( Dana, ref binarny,Zmiejszony);
+            return WyodrebnijLoto(Dana, ref binarny, Zmiejszony);
         }
         public static Dictionary<string, int> DzienikZamian;
         static SiecNeuronowa.SieciRywalizujące<string> Sieć;
         static RozpoznawanieKuponu()
         {
-            Sieć = SiecNeuronowa.SieciRywalizujące<string>.Wczytaj("Loto\\Sieci\\siecloga.tvs",Tab);
+            Sieć = SiecNeuronowa.SieciRywalizujące<string>.Wczytaj("Loto\\Loto\\Sieci\\siecloga.tvs", Tab);
         }
 
         private static string Tab(BinaryReader br)
@@ -285,7 +285,7 @@ namespace Loto
             return br.ReadString();
         }
 
-        internal unsafe static Wynik Rozpoznaj(Linika[] lab2, ZdjecieZPozycją logo,bool* Binarny, int DługośćWiersza)
+        internal unsafe static Wynik Rozpoznaj(Linika[] lab2, ZdjecieZPozycją logo, bool* Binarny, int DługośćWiersza)
         {
 
             Wynik w = null;
@@ -315,11 +315,11 @@ namespace Loto
             return w;
         }
 
-       
 
-        internal unsafe static Wynik Rozpoznaj(Linika[] lab2, ZdjecieZPozycją logo, bool* Binarny, int DługośćWiersza,Wynik.RodzajKuponuEnum rkw)
+
+        internal unsafe static Wynik Rozpoznaj(Linika[] lab2, ZdjecieZPozycją logo, bool* Binarny, int DługośćWiersza, Wynik.RodzajKuponuEnum rkw)
         {
-            
+
 
             Wynik w = null;
             float O = lab2.Sum(xw => xw.ListaZZdjeciami.Sum(xr => xr.NajbliszePodobieństwo));
@@ -347,13 +347,13 @@ namespace Loto
     public abstract class Wynik
     {
         public bool DrugiRaz = false;
-        public  enum RodzajKuponuEnum { Loto,MultiMulti,EkrtraPenska,LotoPlus};
-        public int PrógZłegoWYniku=500;
+        public enum RodzajKuponuEnum { Loto, MultiMulti, EkrtraPenska, LotoPlus };
+        public int PrógZłegoWYniku = 500;
         static LinikaWzgledna DataLosowaniaPojedynczaWzór;
         public LinikaWzgledna Data;
         static Wynik()
         {
-            DataLosowaniaPojedynczaWzór = MałeUproszczenia.WczytajXML<LinikaWzgledna>("Loto\\Liniki\\Data.linika");
+            DataLosowaniaPojedynczaWzór = MałeUproszczenia.WczytajXML<LinikaWzgledna>("Loto\\Loto\\Liniki\\Data.linika");
             DataLosowaniaPojedynczaWzór.PrzygotujSzablon();
         }
         public float OdległośćOdPoprawności;
@@ -365,39 +365,39 @@ namespace Loto
         {
             RodzajKuponu = rk;
         }
-        protected unsafe void ZnajdźDateLosowania(ZdjecieZPozycją Logo, LinikaWzgledna[] lab2,bool* binarny)
+        protected unsafe void ZnajdźDateLosowania(ZdjecieZPozycją Logo, LinikaWzgledna[] lab2, bool* binarny)
         {
             int MiejsceMinimumDaty = (int)(ProstokątNaObrazie.IlośćPikseliSQRT * MinimalneMiejsceDaty);
             foreach (var item in lab2)
             {
-                if (item.Y > Logo.Obszar.Y&&item.Y>MiejsceMinimumDaty)
+                if (item.Y > Logo.Obszar.Y && item.Y > MiejsceMinimumDaty)
                 {
                     float Odległośc;
-                    Odległośc = DataLosowaniaPojedynczaWzór.PodobieństwoIteracyjne(item,40,(int)ProstokątNaObrazie.IlośćPikseliSQRT);
+                    Odległośc = DataLosowaniaPojedynczaWzór.PodobieństwoIteracyjne(item, 40, (int)ProstokątNaObrazie.IlośćPikseliSQRT);
                     if (Odległośc > SiłaDaty) { SiłaDaty = Odległośc; Data = item; }
                 }
 
             }
             //Data.CześciLinijek.UsuńOdbiegająceWielkością(WspółczynikUsunieci);
-           
-            DataLosowania = Data.NajlepszeDopasowanieDoLiniki.UstalOdpowiednie(Data,StałeGlobalne.DopuszalneOdalenieOdWzorca,RozpoznawanieKuponu.DzienikZamian);
+
+            DataLosowania = Data.NajlepszeDopasowanieDoLiniki.UstalOdpowiednie(Data, StałeGlobalne.DopuszalneOdalenieOdWzorca, RozpoznawanieKuponu.DzienikZamian);
 
         }
         public string[] DataLosowania;
         public string[] DataPuszczenia;
-        public unsafe abstract void Znajdź(ZdjecieZPozycją Logo, Linika[] lab2,bool* Binaryn,int DługośćWiersza);
+        public unsafe abstract void Znajdź(ZdjecieZPozycją Logo, Linika[] lab2, bool* Binaryn, int DługośćWiersza);
         public override string ToString()
         {
-            return base.ToString()+" czy Kożystało z dodatkowegoAlgorytmu "+DrugiRaz.ToString();
+            return base.ToString() + " czy Kożystało z dodatkowegoAlgorytmu " + DrugiRaz.ToString();
         }
         public const int MinmalnaOdległoścOdDaty = 80;
         internal int MiejsceDaty()
         {
             return Data.Y - MinmalnaOdległoścOdDaty;
         }
-        public  void ZnajdźOdległość(Linika[] lab2)
+        public void ZnajdźOdległość(Linika[] lab2)
         {
-            OdległośćOdPoprawności= lab2.Sum(xw => xw.ListaZZdjeciami.Sum(xr => xr.NajbliszePodobieństwo));
+            OdległośćOdPoprawności = lab2.Sum(xw => xw.ListaZZdjeciami.Sum(xr => xr.NajbliszePodobieństwo));
         }
     }
 }

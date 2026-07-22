@@ -24,8 +24,8 @@ namespace Loto
         public static SiecNeuronowa.ISiećNeuronowa<string> SiećNeuronowa;
         static PodziałLinik()
         {
-            Sieć = SiecNeuronowa.SieciRywalizujące<string>.Wczytaj("Loto\\Sieci\\"+StałeGlobalne.NazwaPlikuRywalizującejSieci, Czytnik);
-            SiećNeuronowa = new OpakowanieSieci<string>(Network.Load("Loto\\Sieci\\siec.tv"), Sieć.DzienikZamian);
+            Sieć = SiecNeuronowa.SieciRywalizujące<string>.Wczytaj("Loto\\Loto\\Sieci\\" + StałeGlobalne.NazwaPlikuRywalizującejSieci, Czytnik);
+            SiećNeuronowa = new OpakowanieSieci<string>(Network.Load("Loto\\Loto\\Sieci\\siec.tv"), Sieć.DzienikZamian);
         }
         public static float OstatnieWypełnienie;
         public static string Czytnik(BinaryReader br)
