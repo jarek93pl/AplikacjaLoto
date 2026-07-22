@@ -1,17 +1,18 @@
-﻿using System;
+﻿using AForge.Neuro;
+using AForge.Neuro.Learning;
+using Loto.SiecNeuronowa;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
-using AForge.Neuro;
-using AForge.Neuro.Learning;
-using System.Threading;
-using Loto.SiecNeuronowa;
 namespace ŚieciNeuronowe
 {
     public partial class UczenieSieci : Form
@@ -130,7 +131,7 @@ namespace ŚieciNeuronowe
             {
                 for (int i = 0; i < IlośćPetli; i++)
                 {
-
+                    System.Diagnostics.Stopwatch stopwatch = Stopwatch.StartNew();
                     ActivationNetwork network = null;
                     if (DomyślnaSiec == null)
                     {
@@ -203,8 +204,9 @@ namespace ŚieciNeuronowe
 
                     }
 
-                    wk.Add(new WynikNeuroneowej() { błąd = Odhylenie, Poprawne = IlośćPoprawnych });
-                    listBox1.Invoke(new TR(() => { listBox1.Items.Add(IlośćPoprawnych.ToString() + " odchylenie stadardowe " + Odhylenie); }));
+                    wk.Add(new WynikNeuroneowej() { błąd = Odhylenie, Poprawne = IlośćPoprawnych }); 
+                    listBox1.Invoke(new TR(() => { listBox1.Items.Add("corect :" + IlośćPoprawnych.ToString() + "time(ms) " + stopwatch.ElapsedMilliseconds + " standard deviation " + Odhylenie); }));
+
                 }
                 this.Invoke(new TR(() => { this.Text = WynikNeuroneowej.Drukuj(wk); }));
             }));
